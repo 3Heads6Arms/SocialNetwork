@@ -1,0 +1,32 @@
+<md-card class>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Login</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <md-input-container md-no-float>
+            <label>Username</label>
+           <input name="username"
+               type="text"
+               ng-model="username" 
+               required 
+               minlength="3"
+               aria-label="username">
+        </md-input-container>
+        <br>
+        <md-input-container md-no-float>
+            <label>Password</label>
+           <input name="password"
+               type="password"
+               ng-model="password" 
+               required 
+               minlength="3"
+               aria-label="password">
+        </md-input-container>
+        
+    </md-card-content>
+    <md-card-actions layout="row|column" layout-align="start|center|end|space-around|space-between start|center|end|stretch">
+        <md-button class="md-primary md-raised">Login</md-button>
+    </md-card-actions>
+</md-card>
