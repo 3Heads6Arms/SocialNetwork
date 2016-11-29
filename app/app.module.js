@@ -2,5 +2,6 @@ angular.module('SocialNetwork', [
     'ngMaterial',
     'ngRoute',
     'ngMessages',
-    'SocialNetwork.Login'
+    'SocialNetwork.Login',
+    'SocialNetwork.Register'
 ]);

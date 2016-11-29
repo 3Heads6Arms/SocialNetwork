@@ -1,0 +1,14 @@
+.toolbar-title {
+    margin: 12px;
+}
+
+.content {
+    height: 100%;
+}
+
+.input-label {
+    color :rgba(0,0,0,0.54);
+    font-size: 13px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin-left: 4px;
+}

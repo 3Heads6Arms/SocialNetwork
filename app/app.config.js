@@ -10,7 +10,7 @@ angular
                 template: '<login flex layout="row"></login>'
             });
             $routeProvider.when('/register', {
-                template: '<div>Register!!</div>'
+                template: '<register flex layout="row"></register>'
             });
             $routeProvider.otherwise('/');
         }

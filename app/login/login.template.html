@@ -1,5 +1,5 @@
 <div flex layout="row" layout-align="center center">
-    <md-card flex="25">
+    <md-card>
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Login</span>
@@ -9,7 +9,8 @@
             <md-card-content>
                 <md-input-container class="md-block">
                     <label>Username</label>
-                    <input name="username" type="text" ng-model="username" required md-minlength="3" ng-pattern="/^([A-Za-z0-9._-])+$/" aria-label="username" flex>
+                    <input name="username" type="text" ng-model="username" required md-minlength="3" ng-pattern="/^([A-Za-z0-9._-])+$/" aria-label="username"
+                        flex>
                     <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
                         <div ng-message="required">Username is required!</div>
                         <div ng-message="minlength">Username's too short!</div>
@@ -29,7 +30,7 @@
             <md-card-actions layout="row" layout-align="end center">
                 <span>
                 <md-button type="submit">Login</md-button>
-                <md-button class="md-primary md-raised" ng-href="#/register">Register</md-button>
+                <md-button class="md-accent md-raised" ng-href="#/register">Register</md-button>
             </span>
             </md-card-actions>
         </form>
