@@ -3,15 +3,27 @@ angular
     .config([
         '$routeProvider',
         '$locationProvider',
-        function ($routeProvider, $locationProvider) {
-            $locationProvider
+        function ($routeProvider, $locationProvider, $httpProvider) {
+            var newFeedsResolver = {
+                authenticated: [
+                    '$q',
+                    function ($q) {
+                        return $q.reject('Unauthorized Access');
+                    }
+                ]
+            };
 
-            $routeProvider.when('/login', {
-                template: '<login flex layout="row"></login>'
-            });
-            $routeProvider.when('/register', {
-                template: '<register flex layout="row"></register>'
-            });
-            $routeProvider.otherwise('/');
+            $routeProvider
+                .when('/', {
+                    template: 'Feeds Feeds!!!',
+                    resolve: newFeedsResolver.authenticated
+                })
+                .when('/login', {
+                    template: '<login flex layout="row"></login>'
+                })
+                .when('/register', {
+                    template: '<register flex layout="row"></register>'
+                })
+                .otherwise('/');
         }
     ]);
