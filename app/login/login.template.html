@@ -1,32 +1,37 @@
-<md-card class>
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">Login</span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-        <md-input-container md-no-float>
-            <label>Username</label>
-           <input name="username"
-               type="text"
-               ng-model="username" 
-               required 
-               minlength="3"
-               aria-label="username">
-        </md-input-container>
-        <br>
-        <md-input-container md-no-float>
-            <label>Password</label>
-           <input name="password"
-               type="password"
-               ng-model="password" 
-               required 
-               minlength="3"
-               aria-label="password">
-        </md-input-container>
-        
-    </md-card-content>
-    <md-card-actions layout="row|column" layout-align="start|center|end|space-around|space-between start|center|end|stretch">
-        <md-button class="md-primary md-raised">Login</md-button>
-    </md-card-actions>
-</md-card>
+<div flex layout="row" layout-align="center center">
+    <md-card flex="25">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Login</span>
+            </md-card-title-text>
+        </md-card-title>
+        <form name="loginForm">
+            <md-card-content>
+                <md-input-container class="md-block">
+                    <label>Username</label>
+                    <input name="username" type="text" ng-model="username" required md-minlength="3" ng-pattern="/^([A-Za-z0-9._-])+$/" aria-label="username" flex>
+                    <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
+                        <div ng-message="required">Username is required!</div>
+                        <div ng-message="minlength">Username's too short!</div>
+                        <div ng-message="pattern">Username can contain letters, digits, hyphen, underscore and dot</div>
+                    </div>
+                </md-input-container>
+                <br>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input name="password" type="password" ng-model="password" required minlength="3" aria-label="password" flex>
+                    <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$dirty">
+                        <div ng-message="required">Password is required!</div>
+                        <div ng-message="minlength">Password is too short!</div>
+                    </div>
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <span>
+                <md-button type="submit">Login</md-button>
+                <md-button class="md-primary md-raised" ng-href="#/register">Register</md-button>
+            </span>
+            </md-card-actions>
+        </form>
+    </md-card>
+</div>
