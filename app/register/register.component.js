@@ -4,7 +4,8 @@ angular.module('SocialNetwork.Register')
         controller: [
             '$http',
             '$location',
-            function ($http, $location) {
+            'authentication',
+            function ($http, $location, authentication) {
                 this.genders = [{
                     label: 'Male',
                     value: 1
@@ -17,14 +18,11 @@ angular.module('SocialNetwork.Register')
                 }];
 
                 this.submitRegister = function (user) {
-                    console.log(user);
-                    $http
-                        .post('http://softuni-social-network.azurewebsites.net/api/users/Register', user)
-                        .then(function(response){
-                            console.log(response);
-                        })
-                        .catch(function(error){
-                            console.log(error);
+                    authentication.register(user)
+                        .then(function (data) {
+                            console.log(data);
+                            $location.path('/login');
+                            $location.replace();
                         });
                 };
 

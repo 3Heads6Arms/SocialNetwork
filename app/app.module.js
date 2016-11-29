@@ -3,5 +3,6 @@ angular.module('SocialNetwork', [
     'ngRoute',
     'ngMessages',
     'SocialNetwork.Login',
-    'SocialNetwork.Register'
+    'SocialNetwork.Register',
+    'SocialNetwork.Services.Users'
 ]);
