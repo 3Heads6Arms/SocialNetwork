@@ -1,4 +1,16 @@
 <md-toolbar>
-    <span class="toolbar-title">RSquad Book</span>
-    <span ng-if="$ctrl.isAuthenticated">{{userProfile}}</span>
+    <div class="md-toolbar-tools">
+        <span class="toolbar-title">RSquad Book</span>
+        <span flex></span>
+        <span ng-if="$ctrl.isAuthenticated">
+            <md-button aria-label="Name">
+                <md-icon md-svg-icon="img/ic_person.svg"></md-icon>
+                {{$ctrl.userProfile.name}}
+            </md-button>
+            <md-button aria-label="Name" ng-click="$ctrl.logout()">
+                <md-icon md-svg-icon="img/ic_logout.svg"></md-icon>
+                Logout
+            </md-button>
+        </span>
+    </div>
 </md-toolbar>

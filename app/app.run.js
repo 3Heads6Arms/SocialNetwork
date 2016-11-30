@@ -2,11 +2,14 @@ angular.module('SocialNetwork')
     .run([
         '$rootScope',
         '$location',
-        function ($rootScope, $location) {
+        'userService',
+        function ($rootScope, $location, userService) {
             $rootScope.$on('$routeChangeError', function (e, current, previous, rejection) {
                 if (rejection === 'Unauthorized Access') {
                     $location.path('/login');
                 }
             });
+
+            userService.refreshUserToken();
         }
     ]);

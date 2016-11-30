@@ -32,7 +32,7 @@ angular.module('SocialNetwork.Services')
 
                 $http.post(SERVER_URL + 'users/Login', user)
                     .then(function (response) {
-                        saveToken(response.data);
+                        saveToken(response.data.access_token);
                         profilesService
                             .requestUserProfile()
                             .then(function (userProfile) {
@@ -55,16 +55,26 @@ angular.module('SocialNetwork.Services')
                 return !!$cookies.get(COOKIE_ACCESS_TOKEN_KEY);
             }
 
-            function saveToken(data) {
-                $cookies.put(COOKIE_ACCESS_TOKEN_KEY, data.access_token);
-                $http.defaults.headers.common.Authorization = data.token_type + ' ' + data.access_token;
+            function saveToken(accessToken) {
+                $cookies.put(COOKIE_ACCESS_TOKEN_KEY, accessToken);
+                $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+            }
+
+            function refreshUserToken() {
+                var accessToken;
+                if (isAuthenticated()) {
+                    accessToken = $cookies.get(COOKIE_ACCESS_TOKEN_KEY);
+                    $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
+                    profilesService.requestUserProfile();
+                }
             }
 
             return {
                 register: register,
                 login: login,
                 logout: logout,
-                isAuthenticated: isAuthenticated
+                isAuthenticated: isAuthenticated,
+                refreshUserToken: refreshUserToken
             };
         }
     ])
