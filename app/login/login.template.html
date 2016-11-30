@@ -9,17 +9,17 @@
             <md-card-content>
                 <md-input-container class="md-block">
                     <label>Username</label>
-                    <input name="username" type="text" ng-model="username" required md-minlength="3" ng-pattern="/^([A-Za-z0-9._-])+$/" aria-label="username"
-                        flex>
+                    <input name="username" type="text" ng-model="$ctrl.user.username" required md-minlength="3" ng-pattern="/^([A-Za-z0-9._-])+$/"
+                        aria-label="username" flex>
                     <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
                         <div ng-message="required">Username is required!</div>
                         <div ng-message="minlength">Username's too short!</div>
-                        <div ng-message="pattern">Username can contain letters, digits, hyphen, underscore and dot</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>Password</label>
-                    <input name="password" type="password" ng-model="password" required minlength="3" aria-label="password" flex>
+                    <input name="password" type="password" ng-keypress="$ctrl.passwordKeyPressed($event, loginForm.$invalid, $ctrl.user)" ng-model="$ctrl.user.password"
+                        required minlength="3" aria-label="password" flex>
                     <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$dirty">
                         <div ng-message="required">Password is required!</div>
                         <div ng-message="minlength">Password is too short!</div>
@@ -28,7 +28,7 @@
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <span>
-                <md-button type="submit">Login</md-button>
+                <md-button ng-disabled="loginForm.$invalid" ng-click="$ctrl.submitLogin($ctrl.user)">Login</md-button>
                 <md-button class="md-accent md-raised" ng-href="#/register">Register</md-button>
             </span>
             </md-card-actions>

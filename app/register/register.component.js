@@ -2,10 +2,9 @@ angular.module('SocialNetwork.Register')
     .component('register', {
         templateUrl: 'register/register.template.html',
         controller: [
-            '$http',
             '$location',
-            'authentication',
-            function ($http, $location, authentication) {
+            'userService',
+            function ($location, userService) {
                 this.genders = [{
                     label: 'Male',
                     value: 1
@@ -18,10 +17,10 @@ angular.module('SocialNetwork.Register')
                 }];
 
                 this.submitRegister = function (user) {
-                    authentication.register(user)
+                    userService.register(user)
                         .then(function (data) {
                             console.log(data);
-                            $location.path('/login');
+                            $location.path('/');
                             $location.replace();
                         });
                 };

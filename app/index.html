@@ -20,15 +20,14 @@
 </head>
 
 <body layout="column">
-  <md-toolbar>
-    <span class="toolbar-title">RSquad Book</span>
-  </md-toolbar>
+  <toolbar></toolbar>
   <md-content layout-padding>
     <div ng-view></div>
   </md-content>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -37,12 +36,15 @@
   <script src="app.config.js"></script>
   <script src="app.run.js"></script>
   <script src="app.constants.js"></script>
+  <script src="toolbar/toolbar.module.js"></script>
+  <script src="toolbar/toolbar.component.js"></script>
   <script src="login/login.module.js"></script>
   <script src="login/login.component.js"></script>
   <script src="register/register.module.js"></script>
   <script src="register/register.component.js"></script>
-  <script src="services/users/users.module.js"></script>
-  <script src="services/users/users.authentication.js"></script>
+  <script src="services/services.module.js"></script>
+  <script src="services/user.service.js"></script>
+  <script src="services/profiles.service.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>

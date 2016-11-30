@@ -7,7 +7,12 @@ angular
             var newFeedsResolver = {
                 authenticated: [
                     '$q',
-                    function ($q) {
+                    'userService',
+                    function ($q, userService) {
+                        if (userService.isAuthenticated()) {
+                            return $q.when(true);
+                        }
+
                         return $q.reject('Unauthorized Access');
                     }
                 ]
