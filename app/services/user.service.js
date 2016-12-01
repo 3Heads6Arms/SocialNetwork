@@ -71,7 +71,6 @@ angular.module('SocialNetwork.Services')
                             deferred.resolve(true);
                         })
                         .catch(function (error) {
-                            console.log(error);
                             deferred.reject(error);
                         });
                 } else {

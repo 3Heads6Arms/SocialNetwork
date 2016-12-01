@@ -20,7 +20,7 @@ angular
 
             $routeProvider
                 .when('/', {
-                    template: 'Feeds Feeds!!!',
+                    template: 'New Feeds!!!',
                     resolve: newFeedsResolver.authenticated
                 })
                 .when('/login', {
