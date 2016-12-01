@@ -10,6 +10,10 @@ angular.module('SocialNetwork')
                 }
             });
 
-            userService.refreshUserToken();
+            userService.refreshUserToken()
+                .catch(function (error) {
+                    // Session expired
+                    $location.path('/login');
+                });
         }
     ]);

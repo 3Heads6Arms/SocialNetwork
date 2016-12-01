@@ -61,12 +61,24 @@ angular.module('SocialNetwork.Services')
             }
 
             function refreshUserToken() {
+                var deferred = $q.defer();
                 var accessToken;
                 if (isAuthenticated()) {
                     accessToken = $cookies.get(COOKIE_ACCESS_TOKEN_KEY);
                     $http.defaults.headers.common.Authorization = 'Bearer ' + accessToken;
-                    profilesService.requestUserProfile();
+                    profilesService.requestUserProfile()
+                        .then(function (user) {
+                            deferred.resolve(true);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            deferred.reject(error);
+                        });
+                } else {
+                    return $q.when(true);
                 }
+
+                return deferred.promise;
             }
 
             return {
